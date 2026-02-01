@@ -10,15 +10,7 @@ body {
   animation: rainbowBG 15s ease infinite;
 }
 
-/* Kalp şekli (küçültülmüş) */
-.heart {
-  width: 60px;
-  height: 54px;
-  background: red;
-  position: relative;
-  transform: rotate(-45deg);
-  margin: 20px auto 0;
-  animation: heartbeat 1s infinite;
+
 }
 
 .heart::before,
