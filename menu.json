@@ -1,16 +1,23 @@
-{
-  "Hafta 1": {
-    "Pazartesi": "Tavuk ve Salata",
-    "Salı": "Makarna",
-    "Çarşamba": "Balık",
-    "Perşembe": "Kuru Fasulye",
-    "Cuma": "Pizza"
-  },
-  "Hafta 2": {
-    "Pazartesi": "Köfte",
-    "Salı": "Sebzeli Makarna",
-    "Çarşamba": "Tavuk Sote",
-    "Perşembe": "Mercimek Çorbası",
-    "Cuma": "Hamburger"
-  }
-}
+fetch("menu.json")
+  .then(res => res.json())
+  .then(data => {
+    const menuDiv = document.getElementById("menu");
+
+    for (const hafta in data) {
+      // Hafta başlığı
+      const h2 = document.createElement("h2");
+      h2.textContent = hafta;
+      menuDiv.appendChild(h2);
+
+      const ul = document.createElement("ul");
+
+      for (const gun in data[hafta]) {
+        const li = document.createElement("li");
+        li.textContent = `${gun}: ${data[hafta][gun]}`;
+        ul.appendChild(li);
+      }
+
+      menuDiv.appendChild(ul);
+    }
+  })
+  .catch(err => console.error("Menü yüklenemedi:", err));
