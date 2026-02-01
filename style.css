@@ -1,17 +1,28 @@
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  text-align: center;
-  padding-top: 100px;
-  margin: 0;
+.heart {
+  width: 100px;
+  height: 90px;
+  background: red;
+  position: relative;
+  transform: rotate(-45deg);
+  margin: 20px auto;
 }
 
-h1 {
-  font-size: 48px;
+.heart::before,
+.heart::after {
+  content: "";
+  width: 100px;
+  height: 90px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
 }
 
-p {
-  font-size: 20px;
-  opacity: 0.9;
+.heart::before {
+  top: -50px;
+  left: 0;
+}
+
+.heart::after {
+  left: 50px;
+  top: 0;
 }
