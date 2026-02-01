@@ -1,70 +1,38 @@
-/* Genel sayfa ayarları */
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4, #fbc2eb); /* canlı degrade arka plan */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-  color: #fff;
-}
-
-/* Container için stil */
-.container {
-  background: rgba(0, 0, 0, 0.2); /* hafif şeffaf arka plan */
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-}
-
-/* Kalp şekli */
+/* Kalp şekli (küçültüldü) */
 .heart {
-  width: 100px;
-  height: 90px;
+  width: 60px;      /* önce 100px idi */
+  height: 54px;     /* önce 90px idi */
   background: red;
   position: relative;
   transform: rotate(-45deg);
-  margin: 20px auto;
+  margin: 20px auto 0; /* üstten boşluk, alttan 0 */
   animation: heartbeat 1s infinite;
 }
 
 .heart::before,
 .heart::after {
   content: "";
-  width: 100px;
-  height: 90px;
+  width: 60px;      /* küçültüldü */
+  height: 54px;     /* küçültüldü */
   background: red;
   border-radius: 50%;
   position: absolute;
 }
 
 .heart::before {
-  top: -50px;
+  top: -30px;       /* önce -50px idi */
   left: 0;
 }
 
 .heart::after {
-  left: 50px;
+  left: 30px;       /* önce 50px idi */
   top: 0;
 }
 
-/* Kalp animasyonu */
+/* Kalp animasyonu (küçültmeye göre aynı kaldı) */
 @keyframes heartbeat {
   0%, 100% { transform: scale(1) rotate(-45deg); }
   25% { transform: scale(1.2) rotate(-45deg); }
   50% { transform: scale(1) rotate(-45deg); }
   75% { transform: scale(1.2) rotate(-45deg); }
-}
-
-/* Başlık ve paragraf stilleri */
-h1 {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
-
-p {
-  font-size: 20px;
-  margin: 5px 0;
 }
