@@ -1,0 +1,16 @@
+{
+  "Hafta 1": {
+    "Pazartesi": "Tavuk ve Salata",
+    "Salı": "Makarna",
+    "Çarşamba": "Balık",
+    "Perşembe": "Kuru Fasulye",
+    "Cuma": "Pizza"
+  },
+  "Hafta 2": {
+    "Pazartesi": "Köfte",
+    "Salı": "Sebzeli Makarna",
+    "Çarşamba": "Tavuk Sote",
+    "Perşembe": "Mercimek Çorbası",
+    "Cuma": "Hamburger"
+  }
+}
