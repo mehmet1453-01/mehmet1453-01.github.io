@@ -2,17 +2,50 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Mehmet.zehra sonsuza kadar</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haftalık Menü</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f9f9f9; }
+    h1 { color: #2c3e50; }
+    h2 { color: #34495e; margin-top: 20px; }
+    ul { list-style-type: none; padding-left: 0; }
+    li { background: #ecf0f1; margin: 5px 0; padding: 10px; border-radius: 5px; }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Hoş geldin Aşkımm 👋</h1>
-    <p>İYİKİ VARSIN.</p>
-    <p>SENİ SEVİYORUM 💘</p>
-   
+  <h1>Haftalık Menü</h1>
+  <div id="menu-container"></div>
 
-    <div class="heart"></div>
-  </div>
+  <script>
+    // JSON dosyanın GitHub Pages URL'si
+    const jsonUrl = 'https://mehmet1453-01.github.io/haftalik-menu/menu.json';
+
+    fetch(jsonUrl)
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('menu-container');
+
+        for (const hafta in data) {
+          // Hafta başlığı
+          const h2 = document.createElement('h2');
+          h2.textContent = hafta;
+          container.appendChild(h2);
+
+          // Günlerin listesi
+          const ul = document.createElement('ul');
+          for (const gun in data[hafta]) {
+            const li = document.createElement('li');
+            li.textContent = `${gun}: ${data[hafta][gun]}`;
+            ul.appendChild(li);
+          }
+          container.appendChild(ul);
+        }
+      })
+      .catch(err => {
+        console.error('JSON yüklenirken hata:', err);
+        const container = document.getElementById('menu-container');
+        container.textContent = 'Menü yüklenemedi!';
+      });
+  </script>
 </body>
 </html>
