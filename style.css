@@ -1,58 +1,45 @@
-/* Sayfa genel stili */
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background: linear-gradient(270deg, #ff5f6d, #ffc371, #47caff, #ff47d1, #6eff5f);
-  background-size: 1000% 1000%;
-  animation: rainbowBG 15s ease infinite;
-}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haftalık Menü</title>
+  <!-- CSS Dosyasını Bağla -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Haftalık Menü</h1>
+  <div id="menu-container"></div>
 
-/* Kalp şekli (küçültülmüş) */
-.heart {
-  width: 60px;
-  height: 54px;
-  background: red;
-  position: relative;
-  transform: rotate(-45deg);
-  margin: 20px auto 0;
-  animation: heartbeat 1s infinite;
-}
+  <script>
+    // JSON dosyanın GitHub Pages URL'si
+    const jsonUrl = 'https://mehmet1453-01.github.io/haftalik-menu/menu.json';
 
-.heart::before,
-.heart::after {
-  content: "";
-  width: 60px;
-  height: 54px;
-  background: red;
-  border-radius: 50%;
-  position: absolute;
-}
+    fetch(jsonUrl)
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById('menu-container');
 
-.heart::before {
-  top: -30px;
-  left: 0;
-}
+        for (const hafta in data) {
+          const h2 = document.createElement('h2');
+          h2.textContent = hafta;
+          container.appendChild(h2);
 
-.heart::after {
-  left: 30px;
-  top: 0;
-}
-
-/* Kalp animasyonu */
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1) rotate(-45deg); }
-  25% { transform: scale(1.2) rotate(-45deg); }
-  50% { transform: scale(1) rotate(-45deg); }
-  75% { transform: scale(1.2) rotate(-45deg); }
-}
-
-/* Arka plan renk animasyonu */
-@keyframes rainbowBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+          const ul = document.createElement('ul');
+          for (const gun in data[hafta]) {
+            const li = document.createElement('li');
+            li.textContent = `${gun}: ${data[hafta][gun]}`;
+            ul.appendChild(li);
+          }
+          container.appendChild(ul);
+        }
+      })
+      .catch(err => {
+        console.error('JSON yüklenirken hata:', err);
+        const container = document.getElementById('menu-container');
+        container.textContent = 'Menü yüklenemedi!';
+      });
+  </script>
+</body>
+</html>
 
