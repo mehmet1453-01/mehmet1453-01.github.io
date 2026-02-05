@@ -185,3 +185,140 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>HIT HUP Projesi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden; /* Taşmayı gizle */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: black;
+        }
+
+        /* Canvas tüm arka planı kaplasın */
+        canvas#bgCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* container'ın arkasında */
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.55);
+            padding: 40px 60px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0,0,0,0.6);
+            backdrop-filter: blur(6px);
+            z-index: 1;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 18px;
+            opacity: 0.85;
+            margin-bottom: 25px;
+        }
+
+        button {
+            padding: 12px 28px;
+            font-size: 16px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            background: linear-gradient(to right, #0072ff, #00c6ff);
+            color: white;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #00c6ff;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="bgCanvas"></canvas> <!-- Arka plan için canvas -->
+
+    <div class="container">
+        <h1>me.ze </h1>
+        <p>proje 2</p>
+        <button id="startBtn">Başla</button>
+    </div>
+
+    <script>
+        // Butona basınca Google linki aç
+        document.getElementById('startBtn').addEventListener('click', function() {
+            window.open('https://www.google.com/search?q=komik+fotolar+maymun&sca_esv=89aaa52b873f06b6&udm=2&biw=1536&bih=826&sxsrf=ANbL-n6vs3CrVJcidE74kS30Qg1XwlyPFg%3A1770321193503&ei=KfWEaeipHrGL7NYPtbz8gAc&ved=0ahUKEwio4oGvkMOSAxWxBdsEHTUeH3AQ4dUDCBM&uact=5&oq=komik+fotolar+maymun', '_blank');
+        });
+
+        // -----------------------
+        // Teknoloji / yazılım teması animasyonu (Matrix tarzı kod yağmuru)
+        // -----------------------
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = '01<>[]{}()@#$%^&*abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        const fontSize = 16;
+        const columns = Math.floor(canvas.width / fontSize);
+
+        const drops = [];
+        for (let x = 0; x < columns; x++) drops[x] = Math.random() * canvas.height;
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // trail efekti
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0F0'; // yeşil kod
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 50);
+
+        // Pencere boyutu değişirse canvas güncelle
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+
+</body>
+</html>
+
