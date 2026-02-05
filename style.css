@@ -1,18 +1,57 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <title>Mehmet.zehra sonsuza kadar</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <h1>Hoş geldin Aşkımm 👋</h1>
-    <p>İYİKİ VARSIN.</p>
-    <p>SENİ SEVİYORUM 💘</p>
-   
+/* Sayfa genel stili */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(270deg, #ff5f6d, #ffc371, #47caff, #ff47d1, #6eff5f);
+  background-size: 1000% 1000%;
+  animation: rainbowBG 15s ease infinite;
+}
 
-    <div class="heart"></div>
-  </div>
-</body>
-</html>
+/* Kalp şekli (küçültülmüş) */
+.heart {
+  width: 60px;
+  height: 54px;
+  background: red;
+  position: relative;
+  transform: rotate(-45deg);
+  margin: 20px auto 0;
+  animation: heartbeat 1s infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  width: 60px;
+  height: 54px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart::before {
+  top: -30px;
+  left: 0;
+}
+
+.heart::after {
+  left: 30px;
+  top: 0;
+}
+
+/* Kalp animasyonu */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1) rotate(-45deg); }
+  25% { transform: scale(1.2) rotate(-45deg); }
+  50% { transform: scale(1) rotate(-45deg); }
+  75% { transform: scale(1.2) rotate(-45deg); }
+}
+
+/* Arka plan renk animasyonu */
+@keyframes rainbowBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
