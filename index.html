@@ -16,3 +16,84 @@
   </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>HIT HUP Projesi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(270deg, #0f2027, #203a43, #2c5364);
+            background-size: 600% 600%;
+            animation: gradientBG 12s ease infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.55);
+            padding: 40px 60px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0,0,0,0.6);
+            backdrop-filter: blur(6px);
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 18px;
+            opacity: 0.85;
+            margin-bottom: 25px;
+        }
+
+        button {
+            padding: 12px 28px;
+            font-size: 16px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            background: #00c6ff;
+            background: linear-gradient(to right, #0072ff, #00c6ff);
+            color: white;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #00c6ff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>HIT HUP</h1>
+        <p>Modern, hızlı ve şık bir proje başlangıcı</p>
+        <button>Başla</button>
+    </div>
+
+</body>
+</html>
